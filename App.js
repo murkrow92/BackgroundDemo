@@ -8,7 +8,7 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            backgroundColor: 'white'
+            backgroundColor: getBackgroundColor()
         };
     }
 
@@ -28,12 +28,16 @@ export default class App extends React.Component {
     }
 
     changeBackground() {
-        const c = Math.floor(Math.random() * (RANDOM_COLOR.length - 1));
-        console.log("random index: ", c);
         this.setState({
-            backgroundColor: RANDOM_COLOR[c]
-        })
+            backgroundColor: getBackgroundColor()
+        });
     }
+}
+
+const getBackgroundColor = () => {
+    const c = Math.floor(Math.random() * (RANDOM_COLOR.length - 1));
+    console.log("random index: ", c);
+    return RANDOM_COLOR[c];
 }
 
 const styles = StyleSheet.create({
